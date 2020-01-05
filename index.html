@@ -160,24 +160,45 @@
         marker.closePopup();
       }
     });*/
-
+	function geticontype(t){
+		var it;
+		switch(t){
+			case "Fire Hydrant":
+				it="hydrant";
+			break;
+			case "Telephone or Power Pole (pole & wires)":
+				it="pole";
+			break;
+			case "Street Light":
+				it="light";
+			break;
+			case "Bridge with Narrow sidewalks":
+				it="bridge";
+			break;
+			case "Street Sign (parking, stop sign, etc)":
+				it="sign";
+			break;
+			case "Traffic Light":
+				it="traffic";
+			break;
+			case "Other Obstruction":
+				it="other";
+			break;
+		}
+		return it;
+	}
     //Add form response points
     //Add an empty geojson layer for the google sheet points and create the popup
     var gps = new L.geoJson(null, {
 		pointToLayer: function(feature, latlng) {
 			console.log(feature);
-            var smallIcon = L.Icon({
-                options: {
-                    iconSize: [27, 27],
-                    iconAnchor: [13, 27],
-                    popupAnchor:  [1, -24],
-                    iconUrl: 'img/icon-pole.png'
-                }
-            });
-            return L.marker(latlng, {icon: smallIcon});
+			var thistype=geticontype(feature.properties.type);
+            return L.marker(latlng, {icon: typeicons[thistype]});
         },
 		onEachFeature: function(feature, layer) {
-			layer.bindPopup(feature.properties.Description)
+			if(feature.properties.Description){
+				layer.bindPopup(feature.properties.Description)
+			}
 		}
     });
 
@@ -197,5 +218,4 @@
 
   </script>
 </body>
-
 </html>
