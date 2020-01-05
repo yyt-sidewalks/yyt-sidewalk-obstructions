@@ -193,6 +193,8 @@
 		pointToLayer: function(feature, latlng) {
 			console.log(feature);
 			var thistype=geticontype(feature.properties.Type);
+			console.log(thistype);
+			console.log(typeicons[thistype]);
             return L.marker(latlng, {icon: typeicons[thistype]});
         },
 		onEachFeature: function(feature, layer) {
