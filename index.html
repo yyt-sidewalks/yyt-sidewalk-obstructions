@@ -3,13 +3,13 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Leaflet and Google Form GPS Data Collection</title>
+  <title>Sidewalk Obstructions in St John's, NL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta property="og:title" content="Leaflet and Google Form GPS Data Collection" />
+  <meta property="og:title" content="Sidewalk Obstructions in St John's, NL" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://aogdp.github.io/gpsform/" />
+  <meta property="og:url" content="https://yyt-sidewalks.github.io/obstructions/" />
   <meta property="og:image" content="https://raw.githubusercontent.com/aogdp/gpsform/gh-pages/img/gpsform.png" />
-  <meta property="og:description" content="A web app that uses Google Forms and Leaflet to collect data using a web browser." />
+  <meta property="og:description" content="A small app to collect locations of obstructions in sidewalks in St John's, NL" />
   <!--Bootstrap for form-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <!--leaflet-->
@@ -40,22 +40,22 @@
 
 <body>
   <div class="container text-center">
-    <h3>Leaflet GPS Collection using Google Forms</h3>
+    <h3>Data Collection of Sidewalk Obstructions in St John's, NL</h3>
   </div>
   <div class="map">
     <div id="map"></div>
   </div>
   <div class="container">
-    <h4>This is a simple web app that uses Leaflet and Google Forms, along with a few plugins, to collect data using just a modern web browser.</h4>
-    <h4>Check out the simple <a href="https://github.com/aogdp/gpsform/blob/gh-pages/README.md">instructions</a> to learn how to create your own collection app.</h4>
-  </div>
+    <h4>We're collecting the location of sidewalks obstructions in St John's, NL. The data is entirely open access, and meant to help foster discussion about the impact built obstructions - such as poles, signs, and other infrastructure - has on the ability to clear sidewalks of snow, and allow proper movement for pedestrians as well as those using devices such as walkers, wheelchairs, etc.</h4>
+    </div>
   <script>
     var map = L.map('map'); //Initialize the map
 
     var formId = '1FAIpQLSe-QSvUtogBRyFaiLHxoOWoFVWYg-lE5SXpEduEjUUNQtrOkQ';
-    var formLat = '284340177';
-    var formLng = '277741954';
-    var formText = '333827706';
+    var formLat = '761396806';
+    var formLng = '376030242';
+    var formText = '298764423';
+    var formType = '1739376719';
     var gsheet = '2PACX-1vQguHTF4WmXs4mMBPE6CgeYXNqI3S2GMgFW3nok9TmGqYIW_56kJGUBRO696CkLcOIhFqAPqB43rriA';
 
     //Add a basemap
@@ -84,7 +84,7 @@
       lat = e.latlng.lat;
       lng = e.latlng.lng;
 
-      var form = '<div id="formdiv"><form role="form" id="projectform"><div class="form-group"><div class="form-group"><label for="description" class="requiredField">GPS Collection Form</label><textarea class="form-control" rows="3" id="descrip" placeholder="Text input..."></textarea></div><em class="text-muted">Click submit to add a point at this location.</em><div id="formHelp"></div><hr /><button type="submit" id="submit" class="btn btn-default btn-sm">Submit</button></form></div>';
+      var form = '<div id="formdiv"><form role="form" id="projectform"><div class="form-group"><label for="type" class="requiredField">Obstruction Type</label><select class="form-control" id="type"><option value="Fire Hydrant">Fire Hydrant</option><option value="Telephone or Power Pole (pole & wires)">Telephone or Power Pole (pole & wires)</option><option value="Street Light">Street Light</option><option value="Bridge with Narrow sidewalks">Bridge with Narrow sidewalks</option><option value="Street Sign (parking, stop sign, etc)">Street Sign (parking, stop sign, etc)</option><option value="Traffic Light">Traffic Light</option><option value="Other Obstruction">Other Obstruction</option></select></div><div class="form-group"><label for="description">Description</label><textarea class="form-control" rows="3" id="description" placeholder="Enter a description (optional)"></textarea></div><em class="text-muted">Click submit to add a point at this location.</em><div id="formHelp"></div><hr /><button type="submit" id="submit" class="btn btn-default btn-sm">Submit</button></form></div>';
 
       if (e.accuracy) {
         var radius = (e.accuracy / 2) * 3.28084;
@@ -102,11 +102,12 @@
       marker.on('popupopen', function() {
         $('#projectform').submit(function(event) {
             event.preventDefault();
-            var descrip = $('#descrip').val();
+            var descrip = $('#description').val();
+            var obtype = $('#type').val();
             //console.log(descrip);
             if (descrip) {
               //console.log(descrip);
-              $('#formdiv').html('<iframe src="https://docs.google.com/forms/d/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formText + '=' + descrip + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe>');
+              $('#formdiv').html('<iframe src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe>');
             } else {
               $('#formHelp').html('<span style="color:red;">Please enter a description of your point.</span>')
             }
