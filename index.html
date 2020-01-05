@@ -125,7 +125,6 @@
 
     //Add a basemap
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    	zoom: 18,
     	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     //Add Location Options - override the plugin default popup and circle
@@ -143,7 +142,10 @@
 
     //Endable Location at page load and do things once the location is found
     loc.start();
-
+	var offset = map.getSize().y*0.2;
+	// Then move the map
+	map.panBy(new L.Point(0,-offset), {animate: false});
+	map.setZoom(19);
     var marker, circle, lat, lng; //create variables used throughout the map
 	
 	//define icons
@@ -205,10 +207,6 @@
     
 	setTimeout(function() {
 		if(lat) {
-			var offset = map.getSize().y*0.2;
-	// Then move the map
-	  map.panBy(new L.Point(0,-offset), {animate: false});
-	  map.setZoom(19);
 		  return false;
 		}else{
 		  console.log('no loc');
