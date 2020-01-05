@@ -125,6 +125,7 @@
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+	map.setZoom(19);
     //Add Location Options - override the plugin default popup and circle
     var locOptions = {
       drawCircle: false,
@@ -170,7 +171,6 @@
       setTimeout(function() {
         marker.openPopup();
         loc.stop();
-		//map.setZoom(19);
 		var offset = map.getSize().y*0.2;
 		// Then move the map
 		map.panBy(new L.Point(0,-offset), {animate: false});
