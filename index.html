@@ -78,6 +78,18 @@
     loc.start();
 
     var marker, circle, lat, lng; //create variables used throughout the map
+	
+	//define icons
+	var obtypes=['hydrant','pole','light','bridge','sign','traffic','other'];
+	var typeicons={};
+	$.each(obtypes,function(k,v){
+		typeicons[v]= L.icon({
+			iconUrl: 'img/icon-'+v+'.png',
+			iconSize:     [40, 40], // size of the icon
+			iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+	});
 
     function collectData(e) {
       //console.log(e);
@@ -128,15 +140,15 @@
       collectData(e);
     });
     
-  setTimeout(function() {
-    if(lat) {
-      return false;
-    }else{
-      console.log('no loc');
-      loc.stop();
-      map.setView([39,-82], 10);
-      alert('No location found')
-    }
+	setTimeout(function() {
+		if(lat) {
+		  return false;
+		}else{
+		  console.log('no loc');
+		  loc.stop();
+		  map.setView([39,-82], 10);
+		  alert('No location found')
+		}
     }, 6000);
 
     map.on('click', function(e) {
@@ -152,9 +164,21 @@
     //Add form response points
     //Add an empty geojson layer for the google sheet points and create the popup
     var gps = new L.geoJson(null, {
-      onEachFeature: function(feature, layer) {
-        layer.bindPopup(feature.properties.Description)
-      }
+		pointToLayer: function(feature, latlng) {
+			console.log(feature);
+            var smallIcon = L.Icon({
+                options: {
+                    iconSize: [27, 27],
+                    iconAnchor: [13, 27],
+                    popupAnchor:  [1, -24],
+                    iconUrl: 'img/icon-pole.png'
+                }
+            });
+            return L.marker(latlng, {icon: smallIcon});
+        },
+		onEachFeature: function(feature, layer) {
+			layer.bindPopup(feature.properties.Description)
+		}
     });
 
     //Grab the google sheet data using tabletop - published to the web not just shared - and use geojson.min.js to convert into proper geojson format
