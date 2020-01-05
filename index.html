@@ -27,8 +27,18 @@
   <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
   <style>
     *{font-family: 'Source Sans Pro', sans-serif;}
-    .map {height:100%;display:block;}
-    #map {position:absolute;height:100%;}
+    .map {    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;}
+	body{
+		overflow: hidden;
+	  height: 1200px;
+	  width: 100%;
+	}
+    #map {position:absolute;height:100%;width: 100%;}
     .leaflet-popup-content {font-size: medium;}
     .form-group{width:250px;margin-bottom:0;}
     .form-control{resize:none;}
@@ -40,6 +50,7 @@
 		background: #fff;
 		top:20px;
 		margin: 0 auto;
+		z-index:500;
 	}
 	#blurb{
 		position: absolute;
@@ -47,10 +58,12 @@
 		background: #fff;
 		top:20px;
 		right:20px;
+		z-index: 500;
 	}
 	.content-area {
 	  overflow: hidden;
 	  height: 1200px;
+	  width: 100%;
 	}
   </style>
 </head>
