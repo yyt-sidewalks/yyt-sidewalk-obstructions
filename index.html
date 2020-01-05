@@ -74,7 +74,7 @@
 
     //Add a basemap
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    	maxZoom: 19,
+    	maxZoom: 14,
     	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
@@ -205,10 +205,7 @@
     //Add an empty geojson layer for the google sheet points and create the popup
     var gps = new L.geoJson(null, {
 		pointToLayer: function(feature, latlng) {
-			console.log(feature);
 			var thistype=geticontype(feature.properties.Type);
-			console.log(thistype);
-			console.log(typeicons[thistype]);
             return L.marker(latlng, {icon: typeicons[thistype]});
         },
 		onEachFeature: function(feature, layer) {
