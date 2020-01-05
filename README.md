@@ -2,7 +2,7 @@
 
 This is a simple web app allows citizens to mark where there are built objects embedded in sidewalks which obstruct traffic or snow clearing.
 
-![](https://raw.githubusercontent.com/yyt-sidewalks/obstructions/gh-pages/img/yyt-sidewalk-obstructions.png)
+![](https://raw.githubusercontent.com/yyt-sidewalks/obstructions/gh-pages/img/yyt-sidewalk-obstructions.jpg)
 
 #Add Data
 Simply open the web app to add points or markers to the map
