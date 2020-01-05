@@ -54,14 +54,14 @@
 	}
 	#blurb{
 		position: absolute;
-		width:300px;
+		width: calc(100% - 40px);
 		background: #E3FFC9;
 		top:20px;
 		right:20px;
 		z-index: 500;
 	}
 	#blurb h3{
-		margin:0 auto;
+		margin:0;
 		width:fit-content;
 		padding: 0.5em 0em;
 		font-size: 1.2em;
@@ -71,15 +71,14 @@
 	@media (min-width: 992px) {
 		#blurb{
 			position: absolute;
-			width: calc(100% - 40px);
+			width:300px;
 			top:20px;
 			right:20px;
 			z-index: 500;
 		}
 		#blurb h3{
-			margin:0 auto;
+			margin:0;
 			width:fit-content;
-			padding: 0.5em;
 			font-size: unset;
 		}
 		#blurb p {display:block;}
