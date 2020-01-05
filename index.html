@@ -27,24 +27,38 @@
   <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
   <style>
     *{font-family: 'Source Sans Pro', sans-serif;}
-    .map {height:70%}
-    #map {position:relative;height:500px;}
+    .map {height:100%}
+    #map {position:absolute;height:100%;}
     .leaflet-popup-content {font-size: medium;}
     .form-group{width:250px;margin-bottom:0;}
     .form-control{resize:none;}
     .text-muted{font-size:smaller;}
     hr {margin: 10px 0;}
+	#header{
+		position: absolute;
+		height: 2em;
+		background: #fff;
+		top:20px;
+		margin: 0 auto;
+	}
+	#blurb{
+		position: absolute;
+		width:200px;
+		background: #fff;
+		top:20px;
+		right:20px;
+	}
   </style>
 </head>
 
 <body>
-  <div class="container text-center">
+  <div class="container text-center" id="header">
     <h3>Data Collection of Sidewalk Obstructions in St John's, NL</h3>
   </div>
   <div class="map">
     <div id="map"></div>
   </div>
-  <div class="container">
+  <div class="container" id="blurb">
     <h4>We're collecting the location of sidewalks obstructions in St John's, NL. The data is entirely open access, and meant to help foster discussion about the impact built obstructions - such as poles, signs, and other infrastructure - has on the ability to clear sidewalks of snow, and allow proper movement for pedestrians as well as those using devices such as walkers, wheelchairs, etc.</h4>
     </div>
   <script>
