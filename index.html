@@ -140,10 +140,7 @@
 
     //Endable Location at page load and do things once the location is found
     loc.start();
-	var offset = map.getSize().y*0.2;
-	// Then move the map
-	map.panBy(new L.Point(0,-offset), {animate: false});
-	map.setZoom(19);
+	
     var marker, circle, lat, lng; //create variables used throughout the map
 	
 	//define icons
@@ -173,6 +170,10 @@
       setTimeout(function() {
         marker.openPopup();
         loc.stop();
+		var offset = map.getSize().y*0.2;
+		// Then move the map
+		map.panBy(new L.Point(0,-offset), {animate: false});
+		map.setZoom(19);
       }, 100);
 	
       marker.on('popupopen', function() {
