@@ -170,10 +170,10 @@
       setTimeout(function() {
         marker.openPopup();
         loc.stop();
+		map.setZoom(19);
 		var offset = map.getSize().y*0.2;
 		// Then move the map
 		map.panBy(new L.Point(0,-offset), {animate: false});
-		map.setZoom(19);
       }, 100);
 	
       marker.on('popupopen', function() {
