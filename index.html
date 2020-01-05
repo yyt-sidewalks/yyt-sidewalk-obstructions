@@ -102,10 +102,10 @@
       marker.on('popupopen', function() {
         $('#projectform').submit(function(event) {
             event.preventDefault();
-            var descrip = $('#description').val();
+            var description = $('#description').val();
             var obtype = $('#type').val();
             //console.log(descrip);
-            if (descrip) {
+            if (description) {
               //console.log(descrip);
               $('#formdiv').html('<iframe src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe>');
             } else {
