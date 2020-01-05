@@ -201,14 +201,14 @@
 
     map.on('locationfound', function(e) {
       collectData(e);
-	  var offset = map.getSize().y*0.2;
-	// Then move the map
-	  map.panBy(new L.Point(0,-offset), {animate: false});
-	  map.setZoom(19);
     });
     
 	setTimeout(function() {
 		if(lat) {
+			var offset = map.getSize().y*0.2;
+	// Then move the map
+	  map.panBy(new L.Point(0,-offset), {animate: false});
+	  map.setZoom(19);
 		  return false;
 		}else{
 		  console.log('no loc');
@@ -216,7 +216,7 @@
 		  map.setView([39,-82], 10);
 		  alert('No location found')
 		}
-    }, 6000);
+    }, 4000);
 
     map.on('click', function(e) {
       collectData(e);
