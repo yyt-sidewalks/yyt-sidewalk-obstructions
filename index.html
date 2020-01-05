@@ -56,6 +56,7 @@
     var formText = '298764423';
     var formType = '1739376719';
     var gsheet = '2PACX-1vQguHTF4WmXs4mMBPE6CgeYXNqI3S2GMgFW3nok9TmGqYIW_56kJGUBRO696CkLcOIhFqAPqB43rriA';
+	var sharedgsheet ='https://docs.google.com/spreadsheets/d/1IYgFUTsPCthLhbRR7NLhpckAJLL4RleXrZ3AAMX9HMA/edit?usp=sharing';
 
     //Add a basemap
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -158,7 +159,7 @@
 
     //Grab the google sheet data using tabletop - published to the web not just shared - and use geojson.min.js to convert into proper geojson format
     var tabletop = Tabletop.init( {
-      key: gsheet,
+      key: sharedgsheet,
       simpleSheet: true,
       parseNumbers: true,
       callback: function(data, tabletop) {
