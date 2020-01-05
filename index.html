@@ -192,7 +192,7 @@
     var gps = new L.geoJson(null, {
 		pointToLayer: function(feature, latlng) {
 			console.log(feature);
-			var thistype=geticontype(feature.properties.type);
+			var thistype=geticontype(feature.properties.Type);
             return L.marker(latlng, {icon: typeicons[thistype]});
         },
 		onEachFeature: function(feature, layer) {
