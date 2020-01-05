@@ -7,7 +7,7 @@
   <meta property="og:title" content="Sidewalk Obstructions in St John's, NL" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yyt-sidewalks.github.io/obstructions/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/yyt-sidewalks/obstructions/gh-pages/img/yyt-sidewalk-obstructions.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/yyt-sidewalks/obstructions/gh-pages/img/yyt-sidewalk-obstructions.jpg" />
   <meta property="og:description" content="A small app to collect locations of obstructions in sidewalks in St John's, NL" />
   <!--Bootstrap for form-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
@@ -183,7 +183,7 @@
             //console.log(descrip);
             if (obtype) {
               //console.log(descrip);
-              $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe>').promise().done(function(){
+              $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe><p>Saving this submission!</p>').promise().done(function(){
 				  setTimeout(function() {location.reload();}, 2000);
 			  });
             } else {
