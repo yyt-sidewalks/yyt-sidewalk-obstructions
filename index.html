@@ -185,9 +185,8 @@
               //console.log(descrip);
               $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe><p>Saving this submission!</p>').promise().done(function(){
 				setTimeout(function() {
-					console.log(e);
-					console.log(map);
-					console.log(marker);
+					console.log(typeicons);
+					console.log(obtype);
 					L.marker(e.latlng, {icon: typeicons[obtype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
 					map.removeLayer(marker);
 				}, 2000);
