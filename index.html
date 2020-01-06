@@ -196,7 +196,9 @@
           });
       });
 	  if(removemarker){
+		  setTimeout(function() {
 		  map.removeLayer(marker);
+		  }, 1000);
 	  }
       if(marker){
         marker.on('popupclose', function() {
