@@ -188,7 +188,7 @@
 					console.log(typeicons);
 					console.log(obtype);
 					var icontype=geticontype(obtype);
-					L.marker(e.latlng, {icon: typeicons[icontype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
+					var newicon= new L.Marker(e.latlng, {icon: typeicons[icontype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
 					map.removeLayer(marker);
 				}, 2000);
 			  });
