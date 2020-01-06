@@ -184,17 +184,18 @@
             if (obtype) {
               //console.log(descrip);
               $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe><p>Saving this submission!</p>').promise().done(function(){
-				setTimeout(function() {
-					var icontype=geticontype(obtype);
-					var newicon= new L.Marker(e.latlng, {icon: typeicons[icontype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
-				}, 500);
+				if(marker){
+					map.removeLayer(marker);
+				}
+				var icontype=geticontype(obtype);
+				var newicon= new L.Marker(e.latlng, {icon: typeicons[icontype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
 			  });
             } else {
               $('#formHelp').html('<span style="color:red;">Please enter an obstruction type.</span>')
             }
           });
       });
-      if (marker) {
+      if(marker){
         marker.on('popupclose', function() {
           map.removeLayer(marker);
         });
