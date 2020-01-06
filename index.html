@@ -174,7 +174,7 @@
 		// Then move the map
 		map.panBy(new L.Point(0,-offset), {animate: false});
       }, 100);
-	
+		var removemarker=false;
       marker.on('popupopen', function() {
         $('#projectform').submit(function(event) {
             event.preventDefault();
@@ -185,7 +185,7 @@
               //console.log(descrip);
               $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe><p>Saving this submission!</p>').promise().done(function(){
 				if(marker){
-					map.removeLayer(marker);
+					removemarker=true;
 				}
 				var icontype=geticontype(obtype);
 				var newicon= new L.Marker(e.latlng, {icon: typeicons[icontype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
@@ -195,6 +195,9 @@
             }
           });
       });
+	  if(removemarker){
+		  map.removeLayer(marker);
+	  }
       if(marker){
         marker.on('popupclose', function() {
           map.removeLayer(marker);
