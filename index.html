@@ -187,7 +187,8 @@
 				setTimeout(function() {
 					console.log(typeicons);
 					console.log(obtype);
-					L.marker(e.latlng, {icon: typeicons[obtype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
+					var icontype=geticontype(obtype);
+					L.marker(e.latlng, {icon: typeicons[icontype]}).addTo(map).bindPopup('<h6>This is new!</h6>');
 					map.removeLayer(marker);
 				}, 2000);
 			  });
