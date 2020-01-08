@@ -283,7 +283,13 @@
       parseNumbers: true,
       callback: function(data, tabletop) {
 		console.log(data);
-        var gpsData = GeoJSON.parse(data, {Point: ['Latitude', 'Longitude']});
+		var activedata=[];
+		$.each(data,function(k,v){
+			if(v.Active=='Yes'){
+				activedata.push(v);
+			}
+		});
+        var gpsData = GeoJSON.parse(activedata, {Point: ['Latitude', 'Longitude']});
 		console.log(gpsData);
         //add that data to the geojson layer created earlier
         gps.addData(gpsData);
