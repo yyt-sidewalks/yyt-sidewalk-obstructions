@@ -119,6 +119,7 @@
     var formLng = '376030242';
     var formText = '298764423';
     var formType = '1739376719';
+	var formActive ='1860786605';
     var gsheet = '2PACX-1vQguHTF4WmXs4mMBPE6CgeYXNqI3S2GMgFW3nok9TmGqYIW_56kJGUBRO696CkLcOIhFqAPqB43rriA';
 	var sharedgsheet ='https://docs.google.com/spreadsheets/d/1IYgFUTsPCthLhbRR7NLhpckAJLL4RleXrZ3AAMX9HMA/edit?usp=sharing';
 
@@ -184,7 +185,7 @@
             //console.log(descrip);
             if (obtype) {
               //console.log(descrip);
-              $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe><p>Saving this submission!</p>').promise().done(function(){
+              $('#formdiv').html('<iframe id="formSubmission" src="https://docs.google.com/forms/d/e/' + formId + '/formResponse?entry.' + formActive + '=Yes&entry.' + formLat + '=' + lat + '&entry.' + formLng + '=' + lng + '&entry.'+ formType + '=' + obtype + '&entry.'+ formText + '=' + description + '&submit=Submit" seamless scrolling="no" style="overflow:hidden;height:375px;border:lightgray solid thin;"></iframe><p>Saving this submission!</p>').promise().done(function(){
 				if(marker){
 					removemarker=true;
 				}
