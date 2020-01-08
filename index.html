@@ -282,8 +282,9 @@
       simpleSheet: true,
       parseNumbers: true,
       callback: function(data, tabletop) {
+		console.log(data);
         var gpsData = GeoJSON.parse(data, {Point: ['Latitude', 'Longitude']});
-
+		console.log(gpsData);
         //add that data to the geojson layer created earlier
         gps.addData(gpsData);
         gps.addTo(map);
