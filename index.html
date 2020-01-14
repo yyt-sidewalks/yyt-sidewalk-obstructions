@@ -35,8 +35,8 @@
     width: 100%;}
 	body{
 		overflow: hidden;
-	  height: 1200px;
-	  width: 100%;
+		height: 1200px;
+		width: 100%;
 	}
     #map {position:absolute;height:100%;width: 100%;}
     .leaflet-popup-content {font-size: medium;}
@@ -45,9 +45,15 @@
     .text-muted{font-size:smaller;}
     hr {margin: 10px 0;}
 	.content-area {
-	  overflow: hidden;
-	  height: 1200px;
-	  width: 100%;
+		overflow: hidden;
+		height: 1200px;
+		width: 100%;
+	}
+	.mobilehide{
+		display:none;
+	}
+	.right{
+		float:right;
 	}
 	#formSubmission{
 		display:none;
@@ -67,6 +73,11 @@
 		font-size: 1.2em;
 	}
 	#blurb p {display:none;}
+	#blurb p:after,#blurb ul:after {
+		display: table;
+		content: " ";
+		clear: both;
+	}
 	#blurb #showabout{ display:block; color:#4E84A7;margin-bottom:0.5em;}
 	@media (min-width: 992px) {
 		#blurb{
@@ -111,7 +122,8 @@
 	  }
   });
     var map = L.map('map', {
-    zoom: 19
+    zoom: 19,
+	zoomControl: false
 }); //Initialize the map
 
     var formId = '1FAIpQLSe-QSvUtogBRyFaiLHxoOWoFVWYg-lE5SXpEduEjUUNQtrOkQ';
@@ -134,8 +146,10 @@
       follow:true,
 	  watch: true,
 	  setView: true,
-	  enableHighAccuracy: true
+	  enableHighAccuracy: true,
+	  position: 'bottomleft'
     };
+	new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
 
     //Add Location
     var loc = L.control.locate(locOptions).addTo(map);
